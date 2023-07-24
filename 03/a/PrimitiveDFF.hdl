@@ -1,0 +1,18 @@
+
+
+/**
+ * Data Flip Flop built from primitive gates
+ */
+
+CHIP MyDff {
+    IN in, clk;
+    OUT out;
+	CLOCKED in;
+
+    PARTS:
+    Nand (a=in, b=clk, out=d1);
+	Not (in=in, out=notin);
+	Nand (a=notin, b=clk, out=d2);
+	Nand (a=d1, b=notq, out=out, out=q);
+	Nand (a=d2, b=q, out=notq);
+}
